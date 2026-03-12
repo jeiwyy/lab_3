@@ -12,11 +12,8 @@ let rec readSequence () = seq {
 [<EntryPoint>]
 let main args = 
     printfn "Создание последовательности: "
-    let ourSeq = readSequence()
-    let resSeq = 
-        ourSeq
-        |> Seq.map String.length 
-        |> Seq.cache
-    printfn "Исходная последовательность: %A" (ourSeq |> Seq.toList)
+    let ourSeq = readSequence() |> Seq.cache
+    let resSeq = ourSeq |> Seq.map String.length
+    printfn "\nИсходная последовательность: %A" (ourSeq |> Seq.toList)
     printfn "Список длин строк: %A" (resSeq |> Seq.toList)
     0
