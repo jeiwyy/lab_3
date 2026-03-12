@@ -14,7 +14,7 @@ let main args =
     printfn "Создание последовательности: "
     let ourSeq = readSequence()
     let resSeq = 
-        ourSeq 
+        ourSeq
         |> Seq.map String.length 
         |> Seq.cache
     printfn "Исходная последовательность: %A" (ourSeq |> Seq.toList)
