@@ -2,8 +2,6 @@
 open System
 open System.IO
 
-
-
 let rec inpDir () = 
     printf "Введите путь к каталогу: "
     let ourDir = Console.ReadLine()
@@ -11,10 +9,9 @@ let rec inpDir () =
         let i = String.length(elem)
         elem[String.length(ourDir)..i]
     if Directory.Exists(ourDir) then
-        let dirSeq = 
+        let dirSeq =
             Directory.EnumerateFiles ourDir
             |> Seq.map extName
-            |> Seq.cache
         dirSeq
     else 
         printfn "Такая директория не найдена, попробуйте еще раз"
@@ -28,8 +25,7 @@ let finMax acc elem =
 
 [<EntryPoint>]
 let main args =
-    let dirSeq = inpDir()
-    printfn "Все файлы в директории: %A" (dirSeq |> Seq.toList)
+    let dirSeq = inpDir ()
     let result = Seq.fold finMax "" dirSeq
     printfn "Самая длинное название: %s" result
     0

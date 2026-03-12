@@ -6,7 +6,7 @@ let rec createSeq () = seq {
     printf "Введите добавляемое значение(не число - конец): "
     let addVal = System.Int32.TryParse(Console.ReadLine())
     match addVal with
-    | (true, intVal) -> 
+    | (true, intVal) ->
         yield intVal
         yield! createSeq()
     | _ ->
@@ -39,10 +39,9 @@ let rec inpFigure () =
 
 [<EntryPoint>]
 let main args = 
-    let ourSeq = createSeq () |> Seq.cache
-    printfn "Последовательность: %A" (ourSeq |> Seq.toList)
+    let ourSeq = createSeq ()
     let finVal = inpFigure ()
     let sumSeqFold = sumSeq finVal
-    let resInt = Seq.fold sumSeqFold 0 ourSeq
+    let resInt = Seq.fold (sumSeq finVal)0 ourSeq
     printfn "Сумма чисел содержащие '%i' = %i" finVal resInt
     0

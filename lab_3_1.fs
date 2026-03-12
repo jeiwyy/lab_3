@@ -1,4 +1,4 @@
-// Получить список из длин строк, содержащихся в исходной последовательности
+// Получить список из длин строк, содержащихся в исходной последовательности 
 open System
 
 let rec readSequence () = seq {
@@ -12,8 +12,7 @@ let rec readSequence () = seq {
 [<EntryPoint>]
 let main args = 
     printfn "Создание последовательности: "
-    let ourSeq = readSequence() |> Seq.cache
+    let ourSeq = readSequence()
     let resSeq = ourSeq |> Seq.map String.length
-    printfn "\nИсходная последовательность: %A" (ourSeq |> Seq.toList)
-    printfn "Список длин строк: %A" (resSeq |> Seq.toList)
+    printfn "\nСписок длин строк: %A" (resSeq |> Seq.toList)
     0
