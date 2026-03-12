@@ -13,7 +13,10 @@ let rec readSequence () = seq {
 let main args = 
     printfn "Создание последовательности: "
     let ourSeq = readSequence()
-    let resSeq = ourSeq |> Seq.map String.length
+    let resSeq = 
+        ourSeq 
+        |> Seq.map String.length 
+        |> Seq.cache
     printfn "Исходная последовательность: %A" (ourSeq |> Seq.toList)
     printfn "Список длин строк: %A" (resSeq |> Seq.toList)
     0
